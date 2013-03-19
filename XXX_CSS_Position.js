@@ -146,8 +146,8 @@ var XXX_CSS_Position =
 		
 	nextToOffsetElement: function (offsetElement, sideElement, preferredPositions, spacing)
 	{		
-		preferredPositions = this.standardizePreferredPositions();
-		
+		preferredPositions = this.standardizePreferredPositions(preferredPositions);
+				
 		var offsetElementPositionRelativeToPage = this.getRelativeToPage(offsetElement);
 		var offsetElementPositionRelativeToOffsetParent = this.getRelativeToOffsetParent(offsetElement);
 		var offsetElementSize = XXX_CSS_Size.get(offsetElement);
@@ -155,9 +155,9 @@ var XXX_CSS_Position =
 		var sideElementPositionRelativeToPage = this.getRelativeToPage(sideElement);
 		var sideElementSize = XXX_CSS_Size.get(sideElement);
 				
-		var viewPortPositionRelativeToPage = XXX_Manager_Page.getViewPortPosition();
-		var viewPortSize = XXX_Manager_Page.getViewPortSize();
-			
+		var viewPortPositionRelativeToPage = XXX_HTTP_Browser_ViewPort.getPosition();
+		var viewPortSize = XXX_HTTP_Browser_ViewPort.getSize();
+		
 		// Determine best position
 			
 			var foundPosition = false;
@@ -186,25 +186,21 @@ var XXX_CSS_Position =
 				{
 					foundPosition = preferredPosition;
 					
+					//XXX_JS.errorNotification(1, preferredPosition);
+					
 					break;
 				}
 			}
 			
 			if (!foundPosition)
 			{
-				if (XXX_Debug.debug)
-				{
-					XXX_Debug.debugNotification(false, firstPreferredPosition + ': Defaulting, none within viewPort');
-				}
+				//XXX_JS.errorNotification(1, firstPreferredPosition + ': Defaulting, none within viewPort');
 				
 				position = defaultPosition;
 			}
 			else
 			{
-				if (XXX_Debug.debug)
-				{
-					XXX_Debug.debugNotification(false, foundPosition + ': Within viewPort');
-				}
+				//XXX_JS.errorNotification(1, foundPosition + ': Within viewPort');
 			}
 			
 			// Compensate for offsetParent
@@ -258,19 +254,13 @@ var XXX_CSS_Position =
 			
 			if (!foundPosition)
 			{
-				if (XXX_Debug.debug)
-				{
-					XXX_Debug.debugNotification(false, firstPreferredPosition + ': Defaulting, none within viewPort');
-				}
+				//XXX_JS.errorNotification(1, firstPreferredPosition + ': Defaulting, none within viewPort');
 				
 				position = defaultPosition;
 			}
 			else
 			{
-				if (XXX_Debug.debug)
-				{
-					XXX_Debug.debugNotification(false, foundPosition + ': Within viewPort');
-				}
+				//XXX_JS.errorNotification(1, foundPosition + ': Within viewPort');
 			}
 			
 			XXX_CSS.setStyle(sideElement, ['left', 'top'], [position.x + 'px', position.y + 'px']);
