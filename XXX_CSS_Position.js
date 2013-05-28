@@ -151,10 +151,12 @@ var XXX_CSS_Position =
 		var offsetElementPositionRelativeToPage = this.getRelativeToPage(offsetElement);
 		var offsetElementPositionRelativeToOffsetParent = this.getRelativeToOffsetParent(offsetElement);
 		var offsetElementSize = XXX_CSS_Size.get(offsetElement);
-				
-		var sideElementPositionRelativeToPage = this.getRelativeToPage(sideElement);
+		
+		var sideElementOffsetParent = this.getOffsetParent(sideElement);
+		var sideElementOffsetParentPositionRelativeToPage = this.getRelativeToPage(sideElement);
+		
 		var sideElementSize = XXX_CSS_Size.get(sideElement);
-				
+		
 		var viewPortPositionRelativeToPage = XXX_HTTP_Browser_ViewPort.getPosition();
 		var viewPortSize = XXX_HTTP_Browser_ViewPort.getSize();
 		
@@ -204,8 +206,8 @@ var XXX_CSS_Position =
 			}
 			
 			// Compensate for offsetParent
-			position.x -= offsetElementPositionRelativeToPage.x - offsetElementPositionRelativeToOffsetParent.x;
-			position.y -= offsetElementPositionRelativeToPage.y - offsetElementPositionRelativeToOffsetParent.y;
+			//position.x -= sideElementOffsetParentPositionRelativeToPage.x;
+			//position.y -= sideElementOffsetParentPositionRelativeToPage.y;
 							
 			XXX_CSS.setStyle(sideElement, ['left', 'top'], [position.x + 'px', position.y + 'px']);
 	},
