@@ -42,6 +42,35 @@ var XXX_CSS_Visibility =
 		}
 	},
 	
+	toggle: function (element)
+	{
+		element = XXX_DOM.get(element);
+		
+		if (element)
+		{
+			if (!element._XXX_CSS_Size_display)
+			{
+				element._XXX_CSS_Size_display = XXX_CSS.getStyle(element, 'display');
+				
+				if (element._XXX_CSS_Size_display == 'none')
+				{
+					element._XXX_CSS_Size_display = 'block';
+				}
+			}
+			
+			var display = XXX_CSS.getStyle(element, 'display');
+			
+			if (display == 'none')
+			{
+				XXX_CSS.setStyle(element, 'display', element._XXX_CSS_Size_display);
+			}
+			else
+			{
+				XXX_CSS.setStyle(element, 'display', 'none');
+			}
+		}
+	},
+	
 	setOpacity: function (element, opacity)
 	{
 		XXX_CSS.setStyle(element, 'opacity', opacity);
