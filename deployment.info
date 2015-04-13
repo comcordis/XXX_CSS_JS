@@ -1,0 +1,6 @@
+project:XXX_CSS_JS
+deployEnvironment:development
+checkout:master
+commitHash:ce803d8cc9fcf2953668df88c836828073a87253
+timestamp:2015-04-13T09:43:54Z
+deployer:operations
